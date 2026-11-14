@@ -1,0 +1,1580 @@
+{
+  "info": {
+    "_postman_id": "ccc516a7-7ee0-41db-9a23-702416d3c82d",
+    "name": "OrangeHRM API Testing",
+    "description": "StartFragment\n\n## Overview\n\nThis collection contains API testing documentation for the OrangeHRM Demo Application, created using Postman.\n\nThe project focuses on practicing REST API testing, OAuth 2.0 authentication, functional testing, and negative testing as part of a Manual QA portfolio.\n\n## Project Objectives\n\n- Test API endpoints using HTTP methods such as GET, POST, PUT, and DELETE.\n    \n- Verify OAuth 2.0 authentication and authorization.\n    \n- Validate HTTP status codes and response structures.\n    \n- Test positive and negative scenarios.\n    \n- Document request parameters, request bodies, and response examples.\n    \n- Create automated assertions using Postman test scripts.\n    \n\n## Application Under Test\n\n**Application:** OrangeHRM Demo  \n**Base URL:** `https://opensource-demo.orangehrmlive.com/web/index.php`\n\n## Authentication\n\nThis collection uses OAuth 2.0 Authorization Code with PKCE to obtain an access token.\n\nMost protected API requests require a valid Bearer Token.\n\nPlease do not share access tokens, cookies, client credentials, or other sensitive authentication information in published examples.\n\n## Testing Scope\n\n### 1\\. Authentication\n\n- OAuth authentication\n    \n- Verify OAuth authentication\n    \n- Refresh access token\n    \n- Request without authentication\n    \n- Invalid access token\n    \n\n### 2\\. PIM – Employee Management\n\n- Get list of employees\n    \n- Create employee\n    \n- Update employee\n    \n- Delete employee\n    \n\n### 3\\. PIM – Contact Details\n\n- Get employee contact details\n    \n- Update employee contact details\n    \n\n### 4\\. Admin\n\n- Get admin modules\n    \n\n### 5\\. Negative Testing\n\n- Unauthorized access\n    \n- Invalid access token\n    \n- Invalid request data\n    \n- Nonexistent employee ID\n    \n\n## Testing Approach\n\nThe following testing checks are performed where applicable:\n\n- HTTP status code validation\n    \n- Response format and JSON validation\n    \n- Response data validation\n    \n- Required field validation\n    \n- Response time validation\n    \n- Authentication and authorization validation\n    \n\n## Notes and Limitations\n\nThis project uses the publicly available OrangeHRM demo environment. API behavior, test data, and permissions may change depending on the demo application's configuration and availability.\n\nAll documented results are based on actual requests executed in Postman. An HTTP success status alone does not guarantee that submitted data has been persisted; GET requests are used to verify data where applicable.\n\n## Tools\n\n- Postman\n    \n- OrangeHRM Demo Application\n    \n- JavaScript (Postman Tests)\n    \n- OAuth 2.0\n    \n\nEndFragment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59587715",
+    "_collection_link": "https://go.postman.co/collection/59587715-ccc516a7-7ee0-41db-9a23-702416d3c82d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            },
+            {
+              "key": "tokenType",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}",
+          "host": [
+            "{{baseURL}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succes Authentication",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://opensource-demo.orangehrmlive.com/web/index.php",
+              "protocol": "https",
+              "host": [
+                "opensource-demo",
+                "orangehrmlive",
+                "com"
+              ],
+              "path": [
+                "web",
+                "index.php"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "html",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 12:07:43 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "text/html; charset=UTF-8"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            },
+            {
+              "key": "content-encoding",
+              "value": "gzip"
+            }
+          ],
+          "cookie": [],
+          "body": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <title>OrangeHRM</title>\n    <link rel=\"icon\" href=\"/web/dist/favicon.ico?v=1783336755185\">\n  <link href=\"/web/dist/css/chunk-vendors.css?v=1783336755185\" rel=\"preload\" as=\"style\">\n  <link href=\"/web/dist/css/app.css?v=1783336755185\" rel=\"preload\" as=\"style\">\n  <link href=\"/web/dist/js/chunk-vendors.js?v=1783336755185\" rel=\"preload\" as=\"script\">\n  <link href=\"/web/dist/js/app.js?v=1783336755185\" rel=\"preload\" as=\"script\">\n    <link href=\"/web/dist/css/chunk-vendors.css?v=1783336755185\" rel=\"stylesheet\"/>\n  <link href=\"/web/dist/css/app.css?v=1783336755185\" rel=\"stylesheet\"/>\n</head>\n<body>\n  <style>\n    :root {\n            --oxd-primary-one-color:#FF7B1D;\n            --oxd-primary-font-color:#FFFFFF;\n            --oxd-secondary-four-color:#76BC21;\n            --oxd-secondary-font-color:#FFFFFF;\n            --oxd-primary-gradient-start-color:#FF920B;\n            --oxd-primary-gradient-end-color:#F35C17;\n            --oxd-secondary-gradient-start-color:#FF920B;\n            --oxd-secondary-gradient-end-color:#F35C17;\n            --oxd-primary-one-lighten-5-color:#ff8a37;\n            --oxd-primary-one-lighten-30-color:#ffd4b6;\n            --oxd-primary-one-darken-5-color:#ff6c03;\n            --oxd-primary-one-alpha-10-color:rgba(255, 123, 29, 0.1);\n            --oxd-primary-one-alpha-15-color:rgba(255, 123, 29, 0.15);\n            --oxd-primary-one-alpha-20-color:rgba(255, 123, 29, 0.2);\n            --oxd-primary-one-alpha-50-color:rgba(255, 123, 29, 0.5);\n            --oxd-secondary-four-lighten-5-color:#84d225;\n            --oxd-secondary-four-darken-5-color:#68a61d;\n            --oxd-secondary-four-alpha-10-color:rgba(118, 188, 33, 0.1);\n            --oxd-secondary-four-alpha-15-color:rgba(118, 188, 33, 0.15);\n            --oxd-secondary-four-alpha-20-color:rgba(118, 188, 33, 0.2);\n            --oxd-secondary-four-alpha-50-color:rgba(118, 188, 33, 0.5);\n        }\n  </style>\n  <noscript>\n    <strong>\n      We're sorry but orangehrm doesn't work properly without JavaScript enabled. Please enable it to continue.\n    </strong>\n  </noscript>\n\n  <div id=\"app\">\n        <oxd-layout\n        home-url=\"https://www.orangehrm.com/\"\n        :sidepanel-menu-items=\"[{&quot;id&quot;:1,&quot;name&quot;:&quot;Admin&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/admin\\/viewAdminModule&quot;,&quot;icon&quot;:&quot;admin&quot;},{&quot;id&quot;:30,&quot;name&quot;:&quot;PIM&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/pim\\/viewPimModule&quot;,&quot;icon&quot;:&quot;pim&quot;},{&quot;id&quot;:41,&quot;name&quot;:&quot;Leave&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/leave\\/viewLeaveModule&quot;,&quot;icon&quot;:&quot;leave&quot;},{&quot;id&quot;:52,&quot;name&quot;:&quot;Time&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/time\\/viewTimeModule&quot;,&quot;icon&quot;:&quot;time&quot;},{&quot;id&quot;:65,&quot;name&quot;:&quot;Recruitment&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/recruitment\\/viewRecruitmentModule&quot;,&quot;icon&quot;:&quot;recruitment&quot;},{&quot;id&quot;:40,&quot;name&quot;:&quot;My Info&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/pim\\/viewMyDetails&quot;,&quot;icon&quot;:&quot;myinfo&quot;},{&quot;id&quot;:83,&quot;name&quot;:&quot;Performance&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/performance\\/viewPerformanceModule&quot;,&quot;icon&quot;:&quot;performance&quot;},{&quot;id&quot;:82,&quot;name&quot;:&quot;Dashboard&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/dashboard\\/index&quot;,&quot;icon&quot;:&quot;dashboard&quot;,&quot;active&quot;:true},{&quot;id&quot;:93,&quot;name&quot;:&quot;Directory&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/directory\\/viewDirectory&quot;,&quot;icon&quot;:&quot;directory&quot;},{&quot;id&quot;:96,&quot;name&quot;:&quot;Maintenance&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/maintenance\\/viewMaintenanceModule&quot;,&quot;icon&quot;:&quot;maintenance&quot;},{&quot;id&quot;:105,&quot;name&quot;:&quot;Claim&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/claim\\/viewClaimModule&quot;,&quot;icon&quot;:&quot;claim&quot;},{&quot;id&quot;:101,&quot;name&quot;:&quot;Buzz&quot;,&quot;url&quot;:&quot;\\/web\\/index.php\\/buzz\\/viewBuzz&quot;,&quot;icon&quot;:&quot;buzz&quot;}]\"\n        :topbar-menu-items=\"[]\"\n        :user=\"{&quot;firstName&quot;:&quot;manda&quot;,&quot;lastName&quot;:&quot;user&quot;,&quot;profImgSrc&quot;:&quot;\\/web\\/index.php\\/pim\\/viewPhoto\\/empNumber\\/7&quot;,&quot;hasPassword&quot;:true}\"\n        brand-logo-src=\"/web/images/orange.png?v=1783336755185\"\n        brand-banner-src=\"/web/images/orangehrm-logo.png?v=1783336755185\"\n        logout-url=\"/web/index.php/auth/logout\"\n        support-url=\"/web/index.php/help/support\"\n        :update-password-url=\"&quot;/web/index.php/pim/updatePassword&quot;\"\n        :permissions=\"{&quot;dashboard_buzz_widget&quot;:{&quot;canRead&quot;:true,&quot;canCreate&quot;:false,&quot;canUpdate&quot;:false,&quot;canDelete&quot;:false},&quot;dashboard_employees_on_leave_today_config&quot;:{&quot;canRead&quot;:true,&quot;canCreate&quot;:false,&quot;canUpdate&quot;:true,&quot;canDelete&quot;:false},&quot;dashboard_leave_widget&quot;:{&quot;canRead&quot;:true,&quot;canCreate&quot;:false,&quot;canUpdate&quot;:false,&quot;canDelete&quot;:false},&quot;dashboard_location_widget&quot;:{&quot;canRead&quot;:true,&quot;canCreate&quot;:false,&quot;canUpdate&quot;:false,&quot;canDelete&quot;:false},&quot;dashboard_subunit_widget&quot;:{&quot;canRead&quot;:true,&quot;canCreate&quot;:false,&quot;canUpdate&quot;:false,&quot;canDelete&quot;:false},&quot;dashboard_time_widget&quot;:{&quot;canRead&quot;:true,&quot;canCreate&quot;:false,&quot;canUpdate&quot;:false,&quot;canDelete&quot;:false}}\"\n        :breadcrumb=\"{&quot;moduleName&quot;:&quot;Dashboard&quot;,&quot;level&quot;:null}\"\n        :date-format=\"{&quot;id&quot;:&quot;Y-d-m&quot;,&quot;label&quot;:&quot;yyyy-dd-mm&quot;}\"\n        help-url=\"/web/index.php/help/help?label=dashboard_index\"\n        :show-upgrade=\"1\"\n    >\n      <view-dashboard\n            >\n    </view-dashboard>\n    <template v-slot:footer><oxd-text tag=\"p\" class=\"orangehrm-copyright\">OrangeHRM OS 5.9</oxd-text>\n<oxd-text tag=\"p\" class=\"orangehrm-copyright\">&copy; 2005 - 2026 <a href=\"http://www.orangehrm.com\" target=\"_blank\">OrangeHRM, Inc</a>. All rights reserved.</oxd-text>\n<br></template>\n    </oxd-layout>\n  </div>\n    <script type=\"text/javascript\">\n      window.appGlobal = {\n        baseUrl: \"/web/index.php\",\n        publicPath: \"/web\",\n      };\n  </script>\n  <script src=\"/web/dist/js/chunk-vendors.js?v=1783336755185\"></script>\n  <script src=\"/web/dist/js/app.js?v=1783336755185\"></script>\n</body>\n</html>\n"
+        },
+        {
+          "name": "Error Authentication",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://opensource-demo.orangehrmlive.com/web/index.php",
+              "protocol": "https",
+              "host": [
+                "opensource-demo",
+                "orangehrmlive",
+                "com"
+              ],
+              "path": [
+                "web",
+                "index.php"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": ":status",
+              "value": "302"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 12:10:13 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "location",
+              "value": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Get list employees",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\n// Test 1: HTTP status harus 200\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\n// Test 2: Response berupa JSON\r\npm.test(\"Response is JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\n// Test 3: Response berhasil diproses\r\npm.test(\"Response time is below 3000 ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(3000);\r\n});\r\n\r\n// Test 4: Response memiliki struktur data\r\npm.test(\"Response has data property\", function () {\r\n    const jsonData = pm.response.json();\r\n    pm.expect(jsonData).to.have.property(\"data\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/api/v2/pim/employees",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pim",
+            "employees"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Get list employees",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employees/9",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employees",
+                "9"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 14:03:56 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"data\": {\n    \"empNumber\": 9,\n    \"lastName\": \"Hamilton\",\n    \"firstName\": \"Russel\",\n    \"middleName\": \"\",\n    \"employeeId\": \"0034\",\n    \"terminationId\": null\n  },\n  \"meta\": [],\n  \"rels\": []\n}"
+        },
+        {
+          "name": "Error Get list employees",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employees/Russel",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employees",
+                "Russel"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": ":status",
+              "value": "404"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 14:09:38 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "text/html; charset=UTF-8"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-encoding",
+              "value": "gzip"
+            }
+          ],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Create Employee",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\n// 1. Memastikan status HTTP berhasil\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\n// 2. Memastikan request menggunakan POST\r\npm.test(\"Request method is POST\", function () {\r\n    pm.expect(pm.request.method).to.eql(\"POST\");\r\n});\r\n\r\n// 3. Memastikan response berupa JSON\r\npm.test(\"Response is valid JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\n// 4. Memastikan response time kurang dari 1500 ms\r\npm.test(\"Response time is less than 1500ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(1500);\r\n});\r\n\r\n// 5. Memastikan nama depan karyawan adalah Tegar\r\npm.test(\"Assert firstName is Tegar\", function () {\r\n    const responseJSON = pm.response.json();\r\n\r\n    const firstName = responseJSON.data\r\n        ? responseJSON.data.firstName\r\n        : responseJSON.firstName;\r\n\r\n    pm.expect(firstName).to.eql(\"Tegar\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Tegar\",\n  \"middleName\": \"\",\n  \"lastName\": \"Testing\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/api/v2/pim/employees",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pim",
+            "employees"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Create Employee",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Tegar\",\n  \"middleName\": \"\",\n  \"lastName\": \"Testing\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employees",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employees"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 20:05:35 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"data\": {\n    \"empNumber\": 189,\n    \"lastName\": \"Testing\",\n    \"firstName\": \"Tegar\",\n    \"middleName\": \"\",\n    \"employeeId\": null,\n    \"terminationId\": null\n  },\n  \"meta\": [],\n  \"rels\": []\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Employee",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const responseJSON = pm.response.json();\r\n\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Request method is DELETE\", function () {\r\n    pm.expect(pm.request.method).to.eql(\"DELETE\");\r\n});\r\n\r\npm.test(\"Response is valid JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Response contains data\", function () {\r\n    pm.expect(responseJSON.data).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Deleted employee ID is 189\", function () {\r\n    pm.expect(responseJSON.data).to.include(\"189\");\r\n});\r\n\r\npm.test(\"Meta is an array\", function () {\r\n    pm.expect(responseJSON.meta).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Response time below 1500ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(1500);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"ids\": [293]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/api/v2/pim/employees",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pim",
+            "employees"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Delete Employee",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ids\": [293]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employees",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employees"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 20:48:36 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"data\": [\n    \"293\"\n  ],\n  \"meta\": [],\n  \"rels\": []\n}"
+        },
+        {
+          "name": "Delete Employee Non-existent ID",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ids\": [293]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employees",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employees"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "404"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 20:50:17 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"error\": {\n    \"status\": \"404\",\n    \"message\": \"Records Not Found\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Verify OAuth Authentication",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/api/v2/admin/modules",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "admin",
+            "modules"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Verify OAuth Authentication",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v2/admin/modules",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "admin",
+                "modules"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 21:21:08 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"data\": {\n    \"admin\": true,\n    \"pim\": true,\n    \"leave\": true,\n    \"time\": true,\n    \"recruitment\": true,\n    \"performance\": true,\n    \"maintenance\": true,\n    \"mobile\": true,\n    \"directory\": true,\n    \"claim\": true,\n    \"buzz\": true\n  },\n  \"meta\": [],\n  \"rels\": []\n}"
+        }
+      ]
+    },
+    {
+      "name": "Without Authentication",
+      "request": {
+        "auth": {
+          "type": "bearer"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/api/v2/admin/modules",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "admin",
+            "modules"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Without Authentication",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v2/admin/modules",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "admin",
+                "modules"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "401"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 21:38:07 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"error\": {\n    \"status\": 401,\n    \"message\": \"Session expired\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Invalid Acces Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "401 Unauthorized",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v2/admin/modules",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "admin",
+                "modules"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "401"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 21:35:40 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"error\": {\n    \"status\": 401,\n    \"message\": \"Session expired\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Refresh Access Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const responseJSON = pm.response.json();\r\n\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Token type is Bearer\", function () {\r\n    pm.expect(responseJSON.token_type).to.eql(\"Bearer\");\r\n});\r\n\r\npm.test(\"Access token is generated\", function () {\r\n    pm.expect(responseJSON.access_token).to.be.a(\"string\").and.not.empty;\r\n});\r\n\r\npm.test(\"Refresh token is generated\", function () {\r\n    pm.expect(responseJSON.refresh_token).to.be.a(\"string\").and.not.empty;\r\n});\r\n\r\npm.test(\"Token expiration is 1800 seconds\", function () {\r\n    pm.expect(responseJSON.expires_in).to.eql(1800);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "refresh_token"
+            },
+            {
+              "key": "refresh_token",
+              "value": "{{refresh_token}}"
+            },
+            {
+              "key": "client_id",
+              "value": "{{client_id}}"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseURL}}/oauth2/token",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "oauth2",
+            "token"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Refresh Access Token",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "grant_type",
+                  "value": "refresh_token"
+                },
+                {
+                  "key": "refresh_token",
+                  "value": "{{refresh_token}}"
+                },
+                {
+                  "key": "client_id",
+                  "value": "{{client_id}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}/oauth2/token",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "oauth2",
+                "token"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Fri, 13 Nov 2026 22:42:06 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=UTF-8"
+            },
+            {
+              "key": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-store, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 1800,\n  \"access_token\": \"def502001a7900b581a04731e63b0a5d51e709ad5eed8f808dd8286fd5d922c12f4caa88cf4e8d4c124e2a8752efe756ead440b4eb80b68eff450fab3b8ccb8e276dea939fef63e015053bb4bad0e03f08321c7907e126ca8a950cebf4e2d9874c3cc570855b26ebd971d4108aad5a1b7ed725e7ec910dddc1628fc38e3f28cf03aac823fd211521fb4a305335e58c386f074be6a5920c954ac79ae0f4512c8116e49a20\",\n  \"refresh_token\": \"def50200ba02412bfd8bb108a7c353bd84859ed437f9be8342ccfcd60f53c939d81306d10be93f85c31ce28982cd512ee1c386afb74a10ccfda05b673e231eddf200a629170bde286f0c88efe2de3077484d007290d74924c71bbe326fe1bb8478e2fe3f04420e0d6cad29e5a334c8b0afb9f546a3e0dde4e70a66c004a21d30d3abc63d2ceee1901c2c10ab4738451d13e9ff974a9d62bb0b3f9ff148cbdb112e2f3bb330fd469f40313fe033fff370a801254e6746cb2b81d264213720341109142ea4a3be84fd545150b12f832d39c0b82b1ae5efe4c3123b4f7f52b5d257c703404d13054417009c00104570225303eab43820f5a399a702872978e0ac8094c6c33766396ce36436c11ccbea52d982fd7d0402e451e57c0a975d9f7514e7cbd7d40f2d613c1f796d1f5d046ea3113a249cdfa364239c60d255506e3ae0d6279209c66d3c5cd9144b6bf6b3b34ab06b7f7f9f68b4a1571f92d60e3d351c\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Admin Modules",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Admin Modules",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v2/admin/modules",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "admin",
+                "modules"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Sat, 14 Nov 2026 05:14:19 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"data\": {\n    \"admin\": true,\n    \"pim\": true,\n    \"leave\": true,\n    \"time\": true,\n    \"recruitment\": true,\n    \"performance\": true,\n    \"maintenance\": true,\n    \"mobile\": true,\n    \"directory\": true,\n    \"claim\": true,\n    \"buzz\": true\n  },\n  \"meta\": [],\n  \"rels\": []\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Employee Contact Details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const responseJSON = pm.response.json();\r\n\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response is valid JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Response time below 5000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(5000);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"street1\": \"QA Testing Street\",\r\n    \"street2\": \"\",\r\n    \"city\": \"Jakarta\",\r\n    \"province\": \"DKI Jakarta\",\r\n    \"zipCode\": \"17121\",\r\n    \"countryCode\": \"ID\",\r\n    \"homeTelephone\": null,\r\n    \"workTelephone\": null,\r\n    \"mobile\": null,\r\n    \"workEmail\": null,\r\n    \"otherEmail\": null\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/api/v2/pim/employee/96/contact-details",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pim",
+            "employee",
+            "96",
+            "contact-details"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Update Employee Contact Details",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"firstName\":\"Tegar Updated\",\"middleName\":\"\",\"lastName\":\"Testing\"}{\r\n    \"street1\": \"QA Testing Street\",\r\n    \"street2\": \"\",\r\n    \"city\": \"Jakarta\",\r\n    \"province\": \"DKI Jakarta\",\r\n    \"zipCode\": \"17121\",\r\n    \"countryCode\": \"ID\",\r\n    \"homeTelephone\": null,\r\n    \"workTelephone\": null,\r\n    \"mobile\": null,\r\n    \"workEmail\": null,\r\n    \"otherEmail\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employee/96/contact-details",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employee",
+                "96",
+                "contact-details"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Sat, 14 Nov 2026 05:33:51 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"data\": {\n    \"street1\": null,\n    \"street2\": null,\n    \"city\": null,\n    \"province\": null,\n    \"zipCode\": null,\n    \"countryCode\": null,\n    \"homeTelephone\": null,\n    \"workTelephone\": null,\n    \"mobile\": null,\n    \"workEmail\": null,\n    \"otherEmail\": null\n  },\n  \"meta\": [],\n  \"rels\": []\n}"
+        }
+      ]
+    },
+    {
+      "name": "Employee Contact Details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/api/v2/pim/employee/96/contact-details",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pim",
+            "employee",
+            "96",
+            "contact-details"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Succses Contact Details",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employee/96/contact-details",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employee",
+                "96",
+                "contact-details"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "200"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Sat, 14 Nov 2026 05:34:12 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src blob: 'self' mailto:* *.projects-abroad.net native.testing.equest.com www.youtube.com www.google.com demo.docusign.net sandbox.e-signlive.com player.vimeo.com fonts.googleapis.com fonts.gstatic.com 'unsafe-inline' 'unsafe-eval';img-src * 'self' data: blob;font-src 'self' fonts.gstatic.com sandbox.e-signlive.com data:"
+            },
+            {
+              "key": "public-key-pins",
+              "value": "pin-sha256=\"yQhO6YqQX5Y/NxyHAjXnI3jOtYWUm/TtRr666RunXRg=\";pin-sha256=\"WXDfGFFCnQIIh0nuqVGw4nFn+aeW/FrzWeec5j/+FKI=\";pin-sha256=\"Md7QJIL/UMqdHaS73pEkLHm5ofUUE35+r4SYdM014/E=\"; max-age=63072000; includeSubDomains"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"data\": {\n    \"street1\": null,\n    \"street2\": null,\n    \"city\": null,\n    \"province\": null,\n    \"zipCode\": null,\n    \"countryCode\": null,\n    \"homeTelephone\": null,\n    \"workTelephone\": null,\n    \"mobile\": null,\n    \"workEmail\": null,\n    \"otherEmail\": null\n  },\n  \"meta\": [],\n  \"rels\": []\n}"
+        }
+      ]
+    },
+    {
+      "name": "Negative Testing",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const responseJSON = pm.response.json();\r\n\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response is valid JSON\", function () {\r\n    pm.response.to.be.json;\r\n});\r\n\r\npm.test(\"Response contains deleted employee ID\", function () {\r\n    pm.expect(responseJSON.data).to.include(\"189\");\r\n});\r\n\r\npm.test(\"Response time below 3000ms\", function () {\r\n    pm.expect(pm.response.responseTime).to.be.below(3000);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"ids\": [189]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/api/v2/pim/employees",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "pim",
+            "employees"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Delete Nonexistent Employee",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"ids\": [189]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employees",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employees"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "404"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Sat, 14 Nov 2026 06:46:14 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"error\": {\n    \"status\": \"404\",\n    \"message\": \"Records Not Found\"\n  }\n}"
+        },
+        {
+          "name": "Missing Required Fields",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"QA\",\r\n    \"middleName\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employees",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employees"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "422"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Sat, 14 Nov 2026 06:26:08 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"error\": {\n    \"status\": \"422\",\n    \"message\": \"Invalid Parameter\",\n    \"data\": {\n      \"invalidParamKeys\": [\n        \"lastName\"\n      ]\n    }\n  }\n}"
+        },
+        {
+          "name": "Empty Body",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v2/pim/employees",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "pim",
+                "employees"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": ":status",
+              "value": "422"
+            },
+            {
+              "key": "server",
+              "value": "nginx/1.18.0 (Ubuntu)"
+            },
+            {
+              "key": "date",
+              "value": "Sat, 14 Nov 2026 06:15:36 GMT"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "cache-control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "1; mode=block"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"error\": {\n    \"status\": \"422\",\n    \"message\": \"Invalid Parameter\",\n    \"data\": {\n      \"invalidParamKeys\": [\n        \"firstName\",\n        \"lastName\"\n      ]\n    }\n  }\n}"
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessToken",
+        "value": "def5020005558e13d81864f9160a9aed0c830f9094155da615b2bbcdcfa36131f11e7012e968c02d617924ddd1a12e33165d1400b004d2c7fb270ad75381e12180423d590d742c42e13446974c0135c955fc5bd3d8da8a2d7452e4c8f333af8ac016e50f1e0987549572724388626c604bffc5ef4d700192f715a16f2dbeba0f35310795c48232b119c885ac81a977b72aec058d1a36d58d7eac4e7fb19f3d547705ec71",
+        "type": "string"
+      },
+      {
+        "key": "tokenType",
+        "value": "Bearer",
+        "type": "string"
+      },
+      {
+        "key": "token_id",
+        "value": "bd8cd6f2-f8ea-4b47-b5eb-da3fc78f572d",
+        "type": "string"
+      },
+      {
+        "key": "timestamp",
+        "value": 1794635246822,
+        "type": "number"
+      },
+      {
+        "key": "expires_in",
+        "value": 1800,
+        "type": "number"
+      },
+      {
+        "key": "clientId",
+        "value": "3982b14cfd7f6515f9e7e80b233f934f",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://opensource-demo.orangehrmlive.com/web/index.php/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://opensource-demo.orangehrmlive.com/web/index.php/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "tokenName",
+        "value": "OrangeHRM OAuth Token",
+        "type": "string"
+      },
+      {
+        "key": "addTokenTo",
+        "value": "header",
+        "type": "string"
+      },
+      {
+        "key": "state",
+        "value": "orangehrm-qa-state",
+        "type": "string"
+      },
+      {
+        "key": "client_authentication",
+        "value": "body",
+        "type": "string"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://oauth.pstmn.io/v1/callback",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code_with_pkce",
+        "type": "string"
+      },
+      {
+        "key": "id",
+        "value": "collection/ccc516a7-7ee0-41db-9a23-702416d3c82d/0358111d-f8fd-40e7-88b3-89112bb8221f",
+        "type": "string"
+      }
+    ]
+  }
+}
