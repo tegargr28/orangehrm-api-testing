@@ -1,0 +1,5 @@
+# OrangeHRM Test Plan
+
+Dokumentasi test plan untuk pengujian API OrangeHRM.
+
+[Open Test Plan](https://docs.google.com/document/d/147TBN5hBC9CunrU-qOGl794brlgYrfcI-6yqHHWDEgk/edit?usp=drive_link)
